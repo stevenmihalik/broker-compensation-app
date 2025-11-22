@@ -4,11 +4,12 @@ import toast from "react-hot-toast";  // ← Add THIS at the top with other impo
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import { Session } from "@supabase/supabase-js";
 
 export default function SuperAdminPage() {
     const router = useRouter();
-    const [session, setSession] = useState(null);
-    const [role, setRole] = useState("");
+    const [session, setSession] = useState<Session | null>(null);
+    const [role, setRole] = useState<"admin" | "superadmin" | null>(null);
     const [admins, setAdmins] = useState([]);
     const [newAdminEmail, setNewAdminEmail] = useState("");
     const [newAdminPassword, setNewAdminPassword] = useState("");
